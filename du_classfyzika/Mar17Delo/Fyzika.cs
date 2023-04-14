@@ -8,24 +8,24 @@ namespace Mar17Delo
 {
     public class Fyzika
     {
-        private double xFyz = 100.0; 
-        private double yFyz = 100.0; 
+        protected double xFyz = 100.0; 
+        protected double yFyz = 100.0; 
 
-        private double vx = 100.0; 
-        private double vy = 200.0; 
+        protected double vx = 100.0; 
+        protected double vy = 200.0; 
 
-        private double ax = 0.0;
-        private double ay = 0;
+        protected double ax = 0.0;
+        protected double ay = 0;
 
-        const double ag = -9.81;
+        protected const double ag = -9.81;
 
-        private double deltaT = 0.01; 
-        private double m = 100; 
+        protected double deltaT = 0.01; 
+        protected double m = 100; 
 
-        private double Fx = 0;
-        private double Fy = 0;
+        protected double Fx = 0;
+        protected double Fy = 0;
 
-        public void Nastav(double xFyz, double yFyz, double dt, double hmotnost, double vx, double vy)
+        public virtual void Nastav(double xFyz, double yFyz, double dt, double hmotnost, double vx, double vy)
         {
             this.xFyz = xFyz;
             this.yFyz = yFyz;
@@ -36,25 +36,25 @@ namespace Mar17Delo
         }
   
 
-        private void calculateF()
+        public virtual void calculateF()
         {
             Fx = 0;
             Fy = m * ag;
         }
-        private void UpdateZrychlenie()
+        protected void UpdateZrychlenie()
         {
             ax = Fx / m;
-            ay = Fy / m - 9.81;
+            ay = Fy / m ;
         }
 
-        private void UpdateRychlost()
+        protected void UpdateRychlost()
         {
             vx += ax * deltaT;
             vy += ay * deltaT;
         }
        
 
-        private void UpdatePosition()
+        protected void UpdatePosition()
         {
             xFyz += vx * deltaT;
             yFyz += vy * deltaT;

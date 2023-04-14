@@ -20,13 +20,15 @@ namespace Mar17Delo
 
         CGrafPrevod prevod = new CGrafPrevod();
         Fyzika fyzika = new Fyzika();
+        Pruzina pruzina = new Pruzina();
 
         public Form1()
         {
             InitializeComponent();
             //nastav grafiku
             mojaG = pbTeren.CreateGraphics();
-            fyzika.Nastav(100, 100, 1 * spustac.Interval / 1000.0,1,100,200);
+            fyzika.Nastav(100, 100,spustac.Interval / 1000.0,100,100,200);
+            pruzina.Nastav(1, 6, spustac.Interval / 1000.0, 4, 0, 0,4);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -39,13 +41,13 @@ namespace Mar17Delo
                 spustac.Enabled = true;
             //nakresli prvu gulu cervenu
 
-            xGraf = prevod.XmathToGraf(fyzika.GetXFyz());
-            yGraf = prevod.YMathToGraf(fyzika.GetYFyz());
+            xGraf = prevod.XmathToGraf(pruzina.GetXFyz());
+            yGraf = prevod.YMathToGraf(pruzina.GetYFyz());
             mojaG.FillEllipse(Brushes.Red, xGraf, yGraf, sirka, sirka);
 
             //nastav hranice realneho priestoru a grafiky
-            prevod.ZadajHraniceX(0, pbTeren.Width, 0.0, 5000.0);
-            prevod.ZadajHraniceY(0, pbTeren.Height, 0.0, 3000.0);
+            prevod.ZadajHraniceX(0, pbTeren.Width, 0, 2);
+            prevod.ZadajHraniceY(0, pbTeren.Height, -10,10);
         }
 
         private void spustac_Tick(object sender, EventArgs e)
@@ -54,12 +56,12 @@ namespace Mar17Delo
             mojaG.FillEllipse(Brushes.White, xGraf, yGraf, sirka, sirka);
             //******zmen poziciu
 
-            fyzika.Update();
+            pruzina.Update();
 
 
             //premen na xGraf a yGraf
-            xGraf = prevod.XmathToGraf(fyzika.GetXFyz());
-            yGraf = prevod.YMathToGraf(fyzika.GetYFyz());
+            xGraf = prevod.XmathToGraf(pruzina.GetXFyz());
+            yGraf = prevod.YMathToGraf(pruzina.GetYFyz());
 
 
             //nakresli gulu v novej pozicii(nakresli cervenu  gulu

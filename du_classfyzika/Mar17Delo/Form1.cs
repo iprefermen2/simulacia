@@ -26,7 +26,7 @@ namespace Mar17Delo
             InitializeComponent();
             //nastav grafiku
             mojaG = pbTeren.CreateGraphics();
-            fyzika.Nastav(100, 100, 1 * spustac.Interval / 1000.0,1 );
+            fyzika.Nastav(100, 100, 1 * spustac.Interval / 1000.0,1,100,200);
         }
 
         private void btnStart_Click(object sender, EventArgs e)

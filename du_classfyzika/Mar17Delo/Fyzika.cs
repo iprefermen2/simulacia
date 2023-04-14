@@ -17,7 +17,7 @@ namespace Mar17Delo
         private double ax = 0.0;
         private double ay = 0;
 
-        private double ag = -9.81;
+        const double ag = -9.81;
 
         private double deltaT = 0.01; 
         private double m = 100; 
@@ -25,12 +25,14 @@ namespace Mar17Delo
         private double Fx = 0;
         private double Fy = 0;
 
-        public void Nastav(double xFyz, double yFyz, double dt, double hmotnost)
+        public void Nastav(double xFyz, double yFyz, double dt, double hmotnost, double vx, double vy)
         {
             this.xFyz = xFyz;
             this.yFyz = yFyz;
             deltaT = dt;
-            m = hmotnost;      
+            m = hmotnost;
+            this.vx = vx;
+            this.vy = vy;
         }
   
 

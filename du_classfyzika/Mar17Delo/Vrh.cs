@@ -10,6 +10,7 @@ namespace Mar17Delo
     {
         public override void calculateF()
         {
+
             Fx = 0;
             Fy = m * ag;
         }

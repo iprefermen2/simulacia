@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfAppHome.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppHome"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Button Content="Strela" Margin="630,20,20,360" Click="doFireEvent"/>
+        
+       
+       
+        <Button Content="Pruzina" Margin="630,120,20,260" Click="doStringEvent" />
+
+        <Button Content="Magnetka" Margin="630,220,20,160" Click="doMagnetEvent" />
+        
+        <Canvas Width="500" Height="400" Margin="0,17,150,17" x:Name="canvas" Background="#FFE0E0E0">
+            <Ellipse
+                Name="ball"
+                Canvas.Left="200"
+                Canvas.Top="200"
+                Width="30" 
+                Height="30"
+                Fill = "Green">
+            </Ellipse>
+        </Canvas>
+    </Grid>
+</Window>

@@ -86,6 +86,7 @@ namespace WpfAppHome
             fireState = false;
             stringState = false;
             magnetState = true;
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += new EventHandler(timer_Tick);

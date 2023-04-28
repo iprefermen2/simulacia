@@ -21,7 +21,7 @@ namespace WpfAppHome
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer timer;
         int x = 200;
         int y = 200;
         bool fireState, stringState, magnetState;
@@ -69,7 +69,7 @@ namespace WpfAppHome
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
-
+            magnet.Nastav(2500, 2000, 10 / 1000.0, 100, 1, 0, 75);
 
             x = prevod.XmathToGraf(vrh.GetXFyz());
             y = prevod.YMathToGraf(vrh.GetYFyz());
@@ -91,7 +91,7 @@ namespace WpfAppHome
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            magnet.Nastav(2500, 2000, 10 / 1000.0, 100, 1, 0, 75);
+            
             //Ak casovac ide, zastav       
             //nakresli prvu gulu cervenu
 
@@ -151,9 +151,7 @@ namespace WpfAppHome
                 magnet.Update();
                 x = prevod.XmathToGraf(magnet.GetXFyz());
                 y = prevod.YMathToGraf(magnet.GetYFyz());
-            }
-            x = prevod.XmathToGraf(vrh.GetXFyz());
-            y = prevod.YMathToGraf(vrh.GetYFyz());
+            }       
             Canvas.SetLeft(ball, x);
             Canvas.SetTop(ball, y);
         }

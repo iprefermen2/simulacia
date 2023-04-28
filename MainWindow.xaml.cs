@@ -46,8 +46,7 @@ namespace WpfAppHome
             timer.Start();
 
             vrh.Nastav(100, 100, 100 / 1000.0, 100, 100, 200);
-            //Ak casovac ide, zastav       
-            //nakresli prvu gulu cervenu
+            
 
             x = prevod.XmathToGraf(vrh.GetXFyz());
             y = prevod.YMathToGraf(vrh.GetYFyz());

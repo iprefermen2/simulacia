@@ -24,12 +24,13 @@ namespace WpfAppHome
         DispatcherTimer timer;
         int x = 200;
         int y = 200;
-        bool fireState, stringState, magnetState;
+        bool fireState, stringState, magnetState,archimedesState;
 
         CGrafPrevod prevod = new CGrafPrevod();
         Vrh vrh = new Vrh();
         Pruzina pruzina = new Pruzina();
         Magnet magnet = new Magnet();
+        Archimedes archimedes = new Archimedes();
         public MainWindow()
         {
             InitializeComponent();
@@ -40,12 +41,13 @@ namespace WpfAppHome
             fireState = true;
             stringState = false;
             magnetState = false;
+            archimedesState = false;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            vrh.Nastav(100, 100, 100 / 1000.0, 100, 100, 200);
+            vrh.Nastav(100, 100, 0.1, 100, 100, 200);
             
 
             x = prevod.XmathToGraf(vrh.GetXFyz());
@@ -64,7 +66,7 @@ namespace WpfAppHome
             fireState = false;
             stringState = true;
             magnetState = false;
-            pruzina.Nastav(1, 6, 10 / 1000.0, 4, 0, 0, 4);
+            pruzina.Nastav(1, 6, 0.01, 4, 0, 0, 4);
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += new EventHandler(timer_Tick);
@@ -85,6 +87,7 @@ namespace WpfAppHome
             fireState = false;
             stringState = false;
             magnetState = true;
+            archimedesState = false;
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(10);
@@ -107,17 +110,19 @@ namespace WpfAppHome
 
         }
 
+
         private void doFireEvent(object sender, RoutedEventArgs e)
         {
             fireState = true;
             stringState = false;
             magnetState = false;
+            archimedesState = false;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            vrh.Nastav(100, 100, 100 / 1000.0, 100, 100, 200);
+            vrh.Nastav(100, 100, 0.1, 100, 100, 200);
             //Ak casovac ide, zastav       
             //nakresli prvu gulu cervenu
 

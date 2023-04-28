@@ -8,6 +8,8 @@ namespace WpfAppHome
 {
     public class Fyzika
     {
+        protected const double g = -9.81;
+
         protected double xFyz = 100.0; 
         protected double yFyz = 100.0; 
 

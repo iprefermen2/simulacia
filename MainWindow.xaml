@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Name="btn" Content="Vypocitaj" HorizontalAlignment="Left" Margin="39,27,0,0" VerticalAlignment="Top" Height="45" Width="159" Click="vypocitajFaktorial"/>
+        <Button Name="btn" Content="Vypocitaj" HorizontalAlignment="Left" Margin="99,72,0,0" VerticalAlignment="Top" Height="45" Width="159" Click="vypocitajFaktorial" RenderTransformOrigin="0.961,1.829"/>
         <TextBox Name="txtbx"  HorizontalAlignment="Left" Height="66" Margin="278,72,0,0" TextWrapping="Wrap" Text="Zadaj cislo z ktoreho chces faktorial" VerticalAlignment="Top" Width="178"/>
+        <Label Name="lbl" Content="Vysledok: " HorizontalAlignment="Left" Margin="278,143,0,0" VerticalAlignment="Top" Width="178"/>
     </Grid>
 </Window>

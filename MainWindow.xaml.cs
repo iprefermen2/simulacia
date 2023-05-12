@@ -29,6 +29,7 @@ namespace WpfAppHome
             lbl.Content = $"Faktorial cisla {n} je {Convert.ToString(recurse(n))}";
         }
 
+
         public int recurse(int num)
         {         
             if (num == 0)

@@ -7,29 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
-        <Button Content="Strela" Margin="630,20,20,360" Click="doFireEvent"/>
-
-
-
-        <Button Content="Pruzina" Margin="630,120,20,260" Click="doStringEvent" />
-
-        <Button Content="Magnetka" Margin="630,220,20,160" Click="doMagnetEvent" />
-
-        <Canvas Width="500" Height="400" Margin="0,17,150,17" x:Name="canvas" Background="#FFE0E0E0">
-            <Ellipse
-                Name="ball"
-                Canvas.Left="200"
-                Canvas.Top="200"
-                Width="30" 
-                Height="30">
-                <Ellipse.Fill>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF2152B3" Offset="0"/>
-                        <GradientStop Color="#FFCC3838" Offset="0.83"/>
-                    </LinearGradientBrush>
-                </Ellipse.Fill>
-            </Ellipse>
-        </Canvas>
+        <Button Name="btn" Content="Vypocitaj" HorizontalAlignment="Left" Margin="39,27,0,0" VerticalAlignment="Top" Height="45" Width="159" Click="vypocitajFaktorial"/>
+        <TextBox Name="txtbx"  HorizontalAlignment="Left" Height="66" Margin="278,72,0,0" TextWrapping="Wrap" Text="Zadaj cislo z ktoreho chces faktorial" VerticalAlignment="Top" Width="178"/>
     </Grid>
 </Window>

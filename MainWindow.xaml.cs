@@ -21,146 +21,25 @@ namespace WpfAppHome
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer;
-        int x = 200;
-        int y = 200;
-        bool fireState, stringState, magnetState,archimedesState;
-
-        CGrafPrevod prevod = new CGrafPrevod();
-        Vrh vrh = new Vrh();
-        Pruzina pruzina = new Pruzina();
-        Magnet magnet = new Magnet();
-        Archimedes archimedes = new Archimedes();
-        public MainWindow()
+        public int number;
+        public void vypocitajFaktorial(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            fireState = true;
-            stringState = false;
-            magnetState = false;
-            archimedesState = false;
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(10);
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
-
-            vrh.Nastav(100, 100, 0.1, 100, 100, 200);
             
-
-            x = prevod.XmathToGraf(vrh.GetXFyz());
-            y = prevod.YMathToGraf(vrh.GetYFyz());
-            Canvas.SetLeft(ball, x);
-            Canvas.SetTop(ball, y);
-
-            //nastav hranice realneho priestoru a grafiky
-            prevod.ZadajHraniceX(0, Convert.ToInt32(canvas.Width), 0, 5000);
-            prevod.ZadajHraniceY(0, Convert.ToInt32(canvas.Height), 0, 3000);
-
+            int n = Convert.ToInt32(txtbx.Text);
+            txtbx.Text = $"Faktorial cisla {n} je {Convert.ToString(recurse(n))}";
         }
 
-        private void doStringEvent(object sender, RoutedEventArgs e)
-        {
-            fireState = false;
-            stringState = true;
-            magnetState = false;
-            pruzina.Nastav(1, 6, 0.01, 4, 0, 0, 4);
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(10);
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
-            magnet.Nastav(2500, 2000, 10 / 1000.0, 100, 1, 0, 75);
-
-            x = prevod.XmathToGraf(vrh.GetXFyz());
-            y = prevod.YMathToGraf(vrh.GetYFyz());
-            Canvas.SetLeft(ball, x);
-            Canvas.SetTop(ball, y);
-            prevod.ZadajHraniceX(0, Convert.ToInt32(canvas.Width), 0, 2);
-            prevod.ZadajHraniceY(0, Convert.ToInt32(canvas.Height), -10, 10);
-
-        }
-
-        private void doMagnetEvent(object sender, RoutedEventArgs e)
-        {
-            fireState = false;
-            stringState = false;
-            magnetState = true;
-            archimedesState = false;
-
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(10);
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
-
-            
-            //Ak casovac ide, zastav       
-            //nakresli prvu gulu cervenu
-
-            x = prevod.XmathToGraf(magnet.GetXFyz());
-            y = prevod.YMathToGraf(magnet.GetYFyz());
-            Canvas.SetLeft(ball, x);
-            Canvas.SetTop(ball, y);
-
-            //nastav hranice realneho priestoru a grafiky
-            prevod.ZadajHraniceX(0, Convert.ToInt32(canvas.Width), 0, 5000);
-            prevod.ZadajHraniceY(0, Convert.ToInt32(canvas.Height), 0, 4000);
-            
-
-        }
-
-
-        private void doFireEvent(object sender, RoutedEventArgs e)
-        {
-            fireState = true;
-            stringState = false;
-            magnetState = false;
-            archimedesState = false;
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(10);
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Start();
-
-            vrh.Nastav(100, 100, 0.1, 100, 100, 200);
-            //Ak casovac ide, zastav       
-            //nakresli prvu gulu cervenu
-
-            x = prevod.XmathToGraf(vrh.GetXFyz());
-            y = prevod.YMathToGraf(vrh.GetYFyz());
-            Canvas.SetLeft(ball, x);
-            Canvas.SetTop(ball, y);
-
-            //nastav hranice realneho priestoru a grafiky
-            prevod.ZadajHraniceX(0,Convert.ToInt32(canvas.Width), 0, 5000);
-            prevod.ZadajHraniceY(0, Convert.ToInt32(canvas.Height), 0, 3000);
-
-        }
-        
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            if (fireState)
+        public int recurse(int num)
+        {         
+            if (num == 0)
             {
-                vrh.Update();
-                x = prevod.XmathToGraf(vrh.GetXFyz());
-                y = prevod.YMathToGraf(vrh.GetYFyz());
+                return 1;
             }
-            else if (stringState)
+            else
             {
-                pruzina.Update();
-                x = prevod.XmathToGraf(pruzina.GetXFyz());
-                y = prevod.YMathToGraf(pruzina.GetYFyz());
+                return num * recurse(num - 1);
             }
-            else if (magnetState)
-            {
-                magnet.Update();
-                x = prevod.XmathToGraf(magnet.GetXFyz());
-                y = prevod.YMathToGraf(magnet.GetYFyz());
-            }       
-            Canvas.SetLeft(ball, x);
-            Canvas.SetTop(ball, y);
         }
 
-        
     }
 }

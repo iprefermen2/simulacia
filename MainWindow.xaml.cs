@@ -21,25 +21,41 @@ namespace WpfAppHome
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+      
+        string text = "";
+
         public void vypocitajFaktorial(object sender, RoutedEventArgs e)
         {
             
             int n = Convert.ToInt32(txtbx.Text);
-            lbl.Content = $"Faktorial cisla {n} je {Convert.ToString(recurse(n))}";
-        }
-
-
-        public int recurse(int num)
-        {         
-            if (num == 0)
+            int[] cisla = new int[n];
+            //cisla[0] = 0;
+            //cisla[1] = 1;
+            foreach (int i in cisla)
             {
-                return 1;
+                cisla[i] = recurse(i);
+            }
+
+            foreach (int i in cisla)
+            {
+                text = text + $"{cisla[i]}, ";
+            }
+            lbl.Content = text;
+        }
+      
+        public int recurse(int num)
+        {
+            int result;
+
+            if (num <= 1)
+            {
+                result = num;                          
             }
             else
             {
-                return num * recurse(num - 1);
+                result = recurse(num - 1) + recurse(num - 2);
             }
+            return result;
         }
 
     }

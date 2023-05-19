@@ -38,7 +38,7 @@ namespace WpfAppHome
 
             foreach (int i in cisla)
             {
-                text = text + $"{cisla[i]}, ";
+                text = text + $"{Convert.ToString(cisla[i])}, ";
             }
             lbl.Content = text;
         }

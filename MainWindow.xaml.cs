@@ -21,28 +21,27 @@ namespace WpfAppHome
     /// </summary>
     public partial class MainWindow : Window
     {
-      
+
+        int pocet = 0;
         string text = "";
 
         public void vypocitajFaktorial(object sender, RoutedEventArgs e)
         {
-            hanoi(3, 1, 3);
+            hanoi(4, 1, 3);
+            text += $"Pocet krokov: {pocet}";
             lbl.Content = text;
         }
 
         public void hanoi(int n, int start, int end)
         {
-            if (n == 1)
+            if (n > 0)
             {
-                text += $"kamen {n} presun z {start} ---> {end} \n";
-            }
-            else
-            {
+                pocet++;
                 int other = 6 - (start + end);
                 hanoi(n - 1, start, other);
                 text += $"kamen {n} presun z {start} ---> {end} \n";
-                hanoi(n - 1, other, end);            
-            }
+                hanoi(n - 1, other, end);
+            }          
         }
 
     }

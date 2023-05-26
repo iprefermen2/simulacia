@@ -26,36 +26,23 @@ namespace WpfAppHome
 
         public void vypocitajFaktorial(object sender, RoutedEventArgs e)
         {
-            
-            int n = Convert.ToInt32(txtbx.Text);
-            int[] cisla = new int[n];
-            //cisla[0] = 0;
-            //cisla[1] = 1;
-            foreach (int i in cisla)
-            {
-                cisla[i] = recurse(i);
-            }
-
-            foreach (int i in cisla)
-            {
-                text = text + $"{Convert.ToString(cisla[i])}, ";
-            }
+            hanoi(3, 1, 3);
             lbl.Content = text;
         }
-      
-        public int recurse(int num)
-        {
-            int result;
 
-            if (num <= 1)
+        public void hanoi(int n, int start, int end)
+        {
+            if (n == 1)
             {
-                result = num;                          
+                text += $"kamen {n} presun z {start} ---> {end} \n";
             }
             else
             {
-                result = recurse(num - 1) + recurse(num - 2);
+                int other = 6 - (start + end);
+                hanoi(n - 1, start, other);
+                text += $"kamen {n} presun z {start} ---> {end} \n";
+                hanoi(n - 1, other, end);            
             }
-            return result;
         }
 
     }

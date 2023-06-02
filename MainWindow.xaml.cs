@@ -21,28 +21,67 @@ namespace WpfAppHome
     /// </summary>
     public partial class MainWindow : Window
     {
+        int height, weight;
 
-        int pocet = 0;
-        string text = "";
-
-        public void vypocitajFaktorial(object sender, RoutedEventArgs e)
+        private void btn_Click(object sender, RoutedEventArgs e)
         {
-            hanoi(4, 1, 3);
-            text += $"Pocet krokov: {pocet}";
-            lbl.Content = text;
+            lbl.Content = $"BMI: {BMIindex()}";
+            scale();
         }
 
-        public void hanoi(int n, int start, int end)
+        private float BMIindex()
         {
-            if (n > 0)
+            float bmi = 0;
+
+            height = Convert.ToInt32(txth.Text);
+            weight = Convert.ToInt32(txtw.Text);
+
+            bmi = ((float)weight / (float)(height * height)) * 10000;
+
+            return bmi;
+        }
+
+        private void scale()
+        {
+            pBar.Background = Brushes.Gray;
+
+            float bmi = BMIindex();
+            if (bmi >= 18.5 && bmi < 25)
             {
-                pocet++;
-                int other = 6 - (start + end);
-                hanoi(n - 1, start, other);
-                text += $"kamen {n} presun z {start} ---> {end} \n";
-                hanoi(n - 1, other, end);
-            }          
+                pBar.Value = bmi;
+                lblObes.Content = "Ste v normále";
+                pBar.Foreground = Brushes.DarkGreen;
+            }
+            else if (bmi >= 25 && bmi < 30)
+            {
+                pBar.Value = bmi;
+                lblObes.Content = "Máte nadváhu";
+                pBar.Foreground = Brushes.Yellow;
+            }
+            else if (bmi >= 30 && bmi < 35)
+            {
+                pBar.Value = bmi;
+                lblObes.Content = "Máte obezitu I. stupňa";
+                pBar.Foreground = Brushes.Orange;
+            }
+            else if (bmi >= 35 && bmi < 40)
+            {
+                pBar.Value = bmi;
+                lblObes.Content = "Máte obezitu II. stupňa";
+                pBar.Foreground = Brushes.OrangeRed;
+            }
+            else if (bmi < 18.5)
+            {
+                pBar.Value = 0;
+                lblObes.Content = "Máte podváhu";
+                pBar.Background = Brushes.LightBlue;
+            }
+            else if (bmi >= 40)
+            {
+                pBar.Value = 40;
+                lblObes.Content = "Máte obezitu III. stupňa";
+                pBar.Foreground = Brushes.DarkRed;
+            }
         }
-
     }
 }

@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Name="btn" Content="Vypocitaj" HorizontalAlignment="Left" Margin="99,72,0,0" VerticalAlignment="Top" Height="45" Width="159" Click="vypocitajFaktorial" RenderTransformOrigin="0.961,1.829"/>
-        <Label Name="lbl" Content="Vysledok: " HorizontalAlignment="Left" Margin="278,143,0,0" VerticalAlignment="Top" Width="178"/>
+        <Button Name="btn" Content="VYPOČÍTAJ BMI" HorizontalAlignment="Left" Margin="102,93,0,0" VerticalAlignment="Top" Height="71" Width="201" RenderTransformOrigin="0.961,1.829" Click="btn_Click" FontSize="25"/>
+        <TextBox HorizontalAlignment="Left" Margin="429,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Height="41" Name="txth" FontSize="35"/>
+        <TextBox HorizontalAlignment="Left" Margin="429,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Height="41" Name="txtw" FontSize="35"/>
+        <ProgressBar HorizontalAlignment="Left" Height="44" Margin="102,270,0,0" VerticalAlignment="Top" Width="600" Minimum="18.5" Maximum="40" Name="pBar" />
+        <Label Content="BMI:   " HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Center" Height="52" Width="262" Name="lbl" FontSize="30" />
+        <Label Content="" HorizontalAlignment="Left" Margin="102,319,0,0" VerticalAlignment="Top" Width="600" Name="lblObes" FontSize="25" HorizontalContentAlignment="Center"/>
+        <Label Content="Zadaj výšku" HorizontalAlignment="Left" Margin="331,101,0,0" VerticalAlignment="Top" Width="98" FontSize="12"/>
+        <Label Content="Zadaj hmotnosť" HorizontalAlignment="Left" Margin="326,184,0,0" VerticalAlignment="Top" Width="98" FontSize="12"/>
+
     </Grid>
 </Window>

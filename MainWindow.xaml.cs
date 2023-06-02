@@ -25,7 +25,8 @@ namespace WpfAppHome
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            lbl.Content = $"BMI: {BMIindex()}";
+            float text = BMIindex();
+            lbl.Content = $"BMI: {text.ToString("#.##")}";
             scale();
         }
 
